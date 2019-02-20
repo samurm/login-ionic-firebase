@@ -1,0 +1,58 @@
+<ion-header>
+ <!--  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="regForm()">
+
+    <!-- USUARIO -->
+    <ion-item item-start>
+        <ion-label color="primary">
+            <ion-icon item-start name="person"></ion-icon>
+        </ion-label>
+      <ion-input type="text" name="username" placeholder="Usuario" text-input-placeholder-color="light" [(ngModel)]="user.username"></ion-input>
+    </ion-item>
+
+    <!-- EMAIL -->
+    <ion-item>
+      <ion-label color="primary">
+        <ion-icon name="mail"></ion-icon>
+      </ion-label>
+      <ion-input type="email" name="email" placeholder="e-mail" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+
+    <!-- PASSWORD -->
+    <ion-item>
+      <ion-label color="primary">
+        <ion-icon name="lock"></ion-icon>
+      </ion-label>
+      <ion-input type="password" name="pass1" placeholder="Contraseña" [(ngModel)]="user.pass1"></ion-input>
+
+    </ion-item>
+
+    <!-- PASSWORD2 -->
+    <ion-item>
+      <ion-label color="primary">
+        <ion-icon name="lock"></ion-icon>
+      </ion-label>
+      <ion-input type="password" name="pass2" placeholder="Repita la contraseña" [(ngModel)]="user.pass2"></ion-input>
+    </ion-item>
+
+    <hr>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button routerLink="/login" style="text-transform: none;" expand="full">Iniciar Sesión
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button
+            type="submit" style="text-transform: none;" [disabled]="!user.email || !user.pass1 || !user.pass2 || !user.username" expand="full">Registrarse
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
