@@ -2,8 +2,10 @@ export const ERROR_AUTH = {
     'auth/invalid-email': 'Email incorrecto, intenta de nuevo.',
     'auth/email-already-in-use': 'Ese email ya está registrado, ¡Prueba a iniciar sesión!',
     'auth/weak-password': 'La contraseña debe contener al menos 6 carácteres',
-    'default': '!Ups! Lo sentimos, ha ocurrido algún error, prueba de nuevo.'
+    'auth/user-not-found': 'Usuario no encontrado'
 };
+
+export const ERROR_DEFAULT = '!Ups! Lo sentimos, ha ocurrido algún error, prueba de nuevo.';
 
 export const TOKEN_KEY  = 'auth-token';
 

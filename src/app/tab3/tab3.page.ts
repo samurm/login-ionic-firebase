@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../services/authentication.service';
+import { FirebaseService } from '../services/firebase.service';
+import { User } from '../models/user.model';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
   selector: 'app-tab3',
@@ -7,11 +9,20 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  constructor(private authService: AuthenticationService) {
-
+  private user: any;
+  constructor(private fireService: FirebaseService,
+    private photoViewer: PhotoViewer) {
+    this.user = { id: fireService.currentUserId,
+      username: fireService.currentUser.displayName,
+      email: fireService.currentUser.email,
+      photoURL: fireService.currentUser.photoURL};
   }
 
   logOut() {
-    this.authService.logout();
+    this.fireService.signOut();
+  }
+
+  showPhoto() {
+    this.photoViewer.show(this.user.photoURL);
   }
 }

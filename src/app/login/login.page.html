@@ -26,12 +26,18 @@
         <ion-grid>
           <ion-row>
             <ion-col size="6">
-                <ion-button style="text-transform: none;" routerLink="/register" expand="full">Registrarse
+                <ion-button style="text-transform: none;" routerLink="/register" expand="full" color="light">Registrarse
                 </ion-button>
             </ion-col>
             <ion-col size="6">
                 <ion-button style="text-transform: none;" [disabled]="!user.email || !user.pass1"
                 type="submit" expand="full">Iniciar Sesión
+                </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+                <ion-button style="text-transform: none;" expand="full" (click)="googleLogin()" color="danger">Iniciar Sesión Google
                 </ion-button>
             </ion-col>
           </ion-row>
