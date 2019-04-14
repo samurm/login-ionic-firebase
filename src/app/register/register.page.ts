@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase';
-import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { FirebaseService } from '../services/firebase.service';
 
