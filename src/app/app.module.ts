@@ -14,6 +14,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ErrorUser } from './exceptions/global.exception';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,11 +23,14 @@ import { ErrorUser } from './exceptions/global.exception';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     IonicStorageModule.forRoot(), // Storage Ionic
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule, AngularFireDatabaseModule
+    AngularFireAuthModule, AngularFireDatabaseModule,
+    HttpClientModule
     ],
   providers: [
+    PhotoViewer,
     StatusBar,
     SplashScreen,
+    HttpClient,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: ErrorHandler, useClass: ErrorUser }
   ],

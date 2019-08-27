@@ -4,6 +4,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { FirebaseService } from './services/firebase.service';
+import { LoginService } from './services/login.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
@@ -16,6 +17,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private fireService: FirebaseService,
+    private loginService: LoginService,
     private afAuth: AngularFireAuth,
     private router: Router
   ) {
@@ -27,14 +29,22 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      this.afAuth.authState.subscribe((auth) => {
-        this.fireService.authState = auth;
+      this.loginService.authState.subscribe((state) => {
+        if (state) {
+          this.router.navigate(['tabs']);
+        } else {
+          this.router.navigate(['login']);
+        }
+      });
+
+      /* this.afAuth.authState.subscribe((auth) => {
+        this.loginService.authState = auth;
         if (auth === null) {
           this.router.navigate(['login']);
         } else {
           this.router.navigate(['tabs']);
         }
-      });
+      }); */
     });
   }
 }

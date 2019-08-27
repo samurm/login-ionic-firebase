@@ -3,19 +3,20 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angul
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
+import { LoginService } from '../services/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router, private fireService: FirebaseService) { }
+  constructor(private router: Router, private fireService: FirebaseService, private loginService: LoginService) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.fireService.authenticated === false) {
+      if (this.loginService.authenticated === false) {
         this.router.navigate(['login']);
       }
-      return this.fireService.authenticated;
+      return this.loginService.authenticated;
   }
 }
